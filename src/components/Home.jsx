@@ -5,20 +5,20 @@ import Viewers from './Viewers'
 import Movies from './Movies'
 import { useDispatch } from 'react-redux'
 import { setMovies } from '../features/movie/movieSlice'
-import userSlice from '../features/user/userSlice'
 import movieData from '../MovieData.json'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { selectUserEmail } from '../features/user/userSlice'
+import { selectUserName } from '../features/user/userSlice'
 
 
 function Home() {
   const dispatch = useDispatch();
     const navigate = useNavigate();
-    const userEmail = useSelector(selectUserEmail);
+    const userName = useSelector(selectUserName);
    useEffect(()=>{
-    console.log(userSlice);
-    if (!userEmail) navigate("/login");
+    console.log("user name is this", userName);
+    if (!userName || userName == "user") navigate("/login");
+    
       dispatch(setMovies(Object.entries(movieData.movies).map(([key, value]) => ({id: key, ...value}))));
    }, [])
 
