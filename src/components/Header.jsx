@@ -38,12 +38,7 @@ function Header() {
             console.error(token);
             let user = result.user;
             setUser(user);
-            // dispatch(setUserLoginDetails({
-            //     name: user.displayName,
-            //     email: user.email,
-            //     photo: user.photoURL
-            // })) 
-            //  navigate("/")
+           
         }).catch((error) => {
             console.error("this is an error", error);
             // alert(error.message);
