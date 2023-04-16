@@ -9,6 +9,7 @@ import {
 } from "../features/user/userSlice"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
+import {GoogleAuthProvider} from "firebase/auth";
 
 function Header() {
     const dispatch = useDispatch();
@@ -32,16 +33,37 @@ function Header() {
      const signIn = () => {
         auth.signInWithPopup(provider)
         .then((result)=>{
-            let user = result.user
-            dispatch(setUserLoginDetails({
+            console.error(result);
+            const token = result.credential.accessToken;
+            console.error(token);
+            let user = result.user;
+            setUser(user);
+            // dispatch(setUserLoginDetails({
+            //     name: user.displayName,
+            //     email: user.email,
+            //     photo: user.photoURL
+            // })) 
+            //  navigate("/")
+        }).catch((error) => {
+            console.error("this is an error", error);
+            // alert(error.message);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+        });
+     };
+     const setUser = (user) => {
+        dispatch(
+            setUserLoginDetails({
                 name: user.displayName,
                 email: user.email,
-                photo: user.photoURL
-            })) 
-             navigate("/")
-        })
-     }
-         
+                photo: user.photoURL,
+            })
+        );
+    };
      const signOut =() => {
         auth.signOut()
         .then(()=>{
@@ -56,12 +78,13 @@ function Header() {
                 <img src="/images/logo.svg" alt="Disney+" />
             </Logo>
 
-            {!userName ? ( 
+            {
+            userName.trim().length == 0 ? ( 
                 <LoginContainer>
 
                <Login onClick={signIn}>Login</Login>
                 </LoginContainer>
-                 ): 
+                 ): (
                 <>
 
             <NavMenu>
@@ -92,12 +115,12 @@ function Header() {
             </NavMenu>
             <UserImg
               onClick= {signOut}
-            src="https://1fid.com/wp-content/uploads/2022/06/cute-profile-picture-1024x1024.jpg" />
-            </>
+            src={userPhoto} alt={userName} />
+            </> ) 
 }
         </Nav>
     )
-}
+};
 
 export default Header
 
