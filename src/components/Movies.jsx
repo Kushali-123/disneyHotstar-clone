@@ -7,13 +7,15 @@ import { useSelector } from 'react-redux'
 function Movies() {
   const movies = useSelector(selectMovies);
   
-  return (
+  return ( 
+    <>
     <Container>
       <h4>Recommended for You</h4>
       <Content>
         {
           movies && 
-          movies.map((movie)=>(
+          movies.filter((movie) => movie.type == "recommend"
+          ).map((movie)=>(
             <Wrap key= {movie.id}>
               <Link to={`/detail/${movie.id}`}>
               <img src = {movie.cardImg} />
@@ -23,14 +25,73 @@ function Movies() {
           ))
         }
       </Content>
-    </Container>
+
+    </Container>  
+
+<Container>
+<h4>New to Disney+</h4>
+<Content>
+  {
+    movies && 
+    movies.filter((movie) => movie.type == "new"
+    ).map((movie)=>(
+      <Wrap key= {movie.id}>
+        <Link to={`/detail/${movie.id}`}>
+        <img src = {movie.cardImg} />
+        </Link>
+  
+ </Wrap>
+    ))
+  }
+</Content>
+</Container>
+
+<Container>
+<h4>Trending</h4>
+
+<Content>
+  {
+    movies && 
+    movies.filter((movie) => movie.type == "trending"
+    ).map((movie)=>(
+      <Wrap key= {movie.id}>
+        <Link to={`/detail/${movie.id}`}>
+        <img src = {movie.cardImg} />
+        </Link>
+  
+ </Wrap>
+    ))
+  }
+</Content>
+</Container>
+
+<Container>
+<h4>Originals</h4>
+
+<Content>
+  {
+    movies && 
+    movies.filter((movie) => movie.type == "original"
+    ).map((movie)=>(
+      <Wrap key= {movie.id}>
+        <Link to={`/detail/${movie.id}`}>
+        <img src = {movie.cardImg} />
+        </Link>
+  
+ </Wrap>
+    ))
+  }
+</Content>
+</Container>
+
+</>
   )
 }
 
 export default Movies
 
 const Container = styled.div`
-
+padding : 0 0 26px
 
 `;
 

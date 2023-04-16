@@ -7,6 +7,8 @@ function Detail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState("");
+  const [showTrailer, setTrailer] = useState(false);
+  const clickTrailer = () => setTrailer(!showTrailer);
   // const movie = movieData.movies[id]
 
   // if (!movie) navigate("/");
@@ -20,7 +22,9 @@ function Detail() {
     }
  }, [id])
 
- 
+ const Trailer = (url) =>{
+  return <iframe width="560" height="315" src={`${url}?autoplay=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; mute;" allowFullScreen></iframe>
+ }
 
   return (
     <Container>
@@ -37,10 +41,11 @@ function Detail() {
             <img src = "/images/play-icon-black.png" />
             <span>PLAY</span>
           </PlayButton>
-          <TrailerButton>
+          <TrailerButton onClick={clickTrailer}>
              <img src = "/images/play-icon-white.png"/>
              <span>Trailer</span>
           </TrailerButton>
+
           <AddButton>
           <span>+</span>
           </AddButton>
@@ -54,6 +59,7 @@ function Detail() {
       <Description>
        {movie.description}
       </Description>
+      {showTrailer && Trailer(movie.trailerLink)}
       </>
       )}
     </Container>
