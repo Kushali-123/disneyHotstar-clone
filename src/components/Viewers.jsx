@@ -5,33 +5,33 @@ function Viewers() {
   return (
     <Container>
        <Wrap>
-         <img src ={process.env.PUBLIC_URL+"/images/Viewers-disney.png"} />
+         <img src ="/images/Viewers-disney.png" />
          <video muted = {true} autoPlay = {true} loop = {true} playsInline = {true}>
-          <source src = {  process.env.PUBLIC_URL + "/videos/1564674844-disney.mp4" }  type= 'video/mp4' />
+          <source src = "/videos/1564674844-disney.mp4"  type= 'video/mp4' />
          </video>
        </Wrap>
        <Wrap>
-         <img src ={process.env.PUBLIC_URL+"/images/Viewers-pixar.png"} />
+         <img src ="/images/Viewers-pixar.png" />
          <video muted = {true} autoPlay = {true} loop = {true} playsInline = {true}>
-          <source src = {  process.env.PUBLIC_URL + "/videos/1564676714-pixar.mp4" }  type= 'video/mp4' />
+          <source src = "/videos/1564676714-pixar.mp4"  type= 'video/mp4' />
          </video>
        </Wrap>
        <Wrap>
-         <img src ={process.env.PUBLIC_URL+"/images/Viewers-marvel.png"} />
+         <img src ="/images/Viewers-marvel.png" />
          <video muted = {true} autoPlay = {true} loop = {true} playsInline = {true}>
-          <source src = {  process.env.PUBLIC_URL + "/videos/1564676115-marvel.mp4" }  type= 'video/mp4' />
+          <source src = "/videos/1564676115-marvel.mp4"  type= 'video/mp4' />
          </video>
        </Wrap>
        <Wrap>
-         <img src ={process.env.PUBLIC_URL+"/images/Viewers-starwars.png"} />
+         <img src ="/images/Viewers-starwars.png" />
          <video muted = {true} autoPlay = {true} loop = {true} playsInline = {true}>
-          <source src = {  process.env.PUBLIC_URL + "/videos/1608229455-star-wars.mp4" }  type= 'video/mp4' />
+          <source src = "/videos/1608229455-star-wars.mp4"  type= 'video/mp4' />
          </video>
        </Wrap>
        <Wrap>
-         <img src ={process.env.PUBLIC_URL+"/images/Viewers-national.png"} />
+         <img src ="/images/Viewers-national.png" />
          <video muted = {true} autoPlay = {true} loop = {true} playsInline = {true}>
-          <source src = {  process.env.PUBLIC_URL + "/videos/1564676296-national-geographic.mp4" }  type= 'video/mp4' />
+          <source src = "/videos/1564676296-national-geographic.mp4"  type= 'video/mp4' />
          </video>
        </Wrap>
     </Container>

@@ -38,11 +38,11 @@ function Detail() {
         </ImageTitle>
         <Controls>
           <PlayButton>
-            <img src = {process.env.PUBLIC_URL+"/images/play-icon-black.png"} />
+            <img src = "/images/play-icon-black.png" />
             <span>PLAY</span>
           </PlayButton>
           <TrailerButton onClick={clickTrailer}>
-             <img src = {process.env.PUBLIC_URL+"/images/play-icon-white.png"}/>
+             <img src = "/images/play-icon-white.png"/>
              <span>Trailer</span>
           </TrailerButton>
 
@@ -50,7 +50,7 @@ function Detail() {
           <span>+</span>
           </AddButton>
           <GroupWatchButton>
-             <img src ={process.env.PUBLIC_URL+"/images/group-icon.png"}/>
+             <img src ="/images/group-icon.png"/>
           </GroupWatchButton>
         </Controls>
         <SubTitle>
