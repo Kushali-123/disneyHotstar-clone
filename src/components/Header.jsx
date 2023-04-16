@@ -1,12 +1,54 @@
 import React from 'react'
 import styled from 'styled-components'
+import {auth, provider} from '../firebase'
+import {
+    selectUserName,
+    selectUserPhoto,
+    setUserLoginDetails,
+    setSignOutState
+} from "../features/user/userSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userName = useSelector(selectUserName);
+     const userPhoto = useSelector(selectUserPhoto);
+   
+     const signIn = () => {
+        auth.signInWithPopup(provider)
+        .then((result)=>{
+            let user = result.user
+            dispatch(setUserLoginDetails({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL
+            }))  
+        })
+     }
+         
+     const signOut =() => {
+        auth.signOut()
+        .then(()=>{
+            dispatch(setSignOutState())
+            navigate("/login")
+        })
+     }
+
     return (
         <Nav>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+" />
             </Logo>
+
+            {!userName ? ( 
+                <LoginContainer>
+
+               <Login onClick={signIn}>Login</Login>
+                </LoginContainer>
+                 ): 
+                <>
 
             <NavMenu>
                 <a href="/home">
@@ -34,7 +76,11 @@ function Header() {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <UserImg src="https://1fid.com/wp-content/uploads/2022/06/cute-profile-picture-1024x1024.jpg" />
+            <UserImg
+              onClick= {signOut}
+            src="https://1fid.com/wp-content/uploads/2022/06/cute-profile-picture-1024x1024.jpg" />
+            </>
+}
         </Nav>
     )
 }
@@ -106,4 +152,31 @@ const UserImg = styled.img`
   height: 48px;
    border-radius: 50%;
    cursor: pointer;
+`;
+
+const Login = styled.a`
+background-color: rgba(0, 0, 0, 0.6);
+padding: 8px 16px;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+border: 1px solid #f9f9f9;
+border-radius: 4px;
+transition: all 0.2s ease 0s;
+cursor: pointer;
+
+&:hover{
+    background-color: #f9f9f9;
+    color: #000;
+     border-color: transparent;
+     cursor: pointer;
+}
+
+
+`;
+
+const LoginContainer = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+
 `;

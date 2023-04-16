@@ -1,14 +1,36 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
+import { redirect, useNavigate, useParams } from 'react-router-dom'
+import movieData from '../MovieData.json'
 
 function Detail() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [movie, setMovie] = useState("");
+  // const movie = movieData.movies[id]
+
+  // if (!movie) navigate("/");
+
+  useEffect(()=>{
+    const mov = movieData.movies[id];
+    if (mov) {
+      setMovie(mov);
+    } else {
+      navigate("/")
+    }
+ }, [id])
+
+ 
+
   return (
     <Container>
+      {movie && (
+        <>
       <Background>
-        <img src= "https://cdn.vox-cdn.com/thumbor/wJ71E7nJ_4Wj0btm5seEnHNJ4Xk=/0x0:4096x2304/1200x800/filters:focal(1973x1175:2627x1829)/cdn.vox-cdn.com/uploads/chorus_image/image/60190709/BO_RGB_s120_22a_cs_pub.pub16.318.0.jpg"/>
+        <img src= {movie.backgroundImg} />
         </Background>
         <ImageTitle>
-            <img src ="https://picwishhk.oss-cn-hongkong.aliyuncs.com/tasks/output/segmentation/d979862b-eab9-4fda-a81f-66da033d7eae-image.png?Expires=1681554535&OSSAccessKeyId=LTAI5tGjJnh66c1txANiRBQN&Signature=DnJQ4lGKrXBLBZKfwo12g49QkEM%3D" />
+            <img src = {movie.titleImg} />
         </ImageTitle>
         <Controls>
           <PlayButton>
@@ -27,12 +49,13 @@ function Detail() {
           </GroupWatchButton>
         </Controls>
         <SubTitle>
-          2018 . 7m . Family, Kids, Animation
+          {movie.subTitle}
       </SubTitle>
       <Description>
-        An ageing chinese mom gets another chance at motherhood when one
-        of her dumplings springs to life as a lively, giggly dumpling boy.
+       {movie.description}
       </Description>
+      </>
+      )}
     </Container>
  )
 }
