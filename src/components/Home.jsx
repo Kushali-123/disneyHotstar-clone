@@ -34,7 +34,7 @@ const Container = styled.main`
         overflow-x: hidden;
         
         &:before{
-          background: url(${window.location.origin+"/images/home-background.png"}) center center / cover 
+          background: url(${process.env.PUBLIC_URL+"/images/home-background.png"}) center center / cover 
           no-repeat fixed;
           content: "";
           position: absolute;

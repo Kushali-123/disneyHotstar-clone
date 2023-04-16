@@ -53,7 +53,7 @@ function Header() {
     return (
         <Nav>
             <Logo>
-                <img src={window.location.origin+"/images/logo.svg"} alt="Disney+" />
+                <img src={process.env.PUBLIC_URL+"/images/logo.svg"} alt="Disney+" />
             </Logo>
 
             {!userName ? ( 
@@ -66,27 +66,27 @@ function Header() {
 
             <NavMenu>
                 <a href="/home">
-                    <img src={window.location.origin+"/images/home-icon.svg"} alt="HOME" />
+                    <img src={process.env.PUBLIC_URL+"/images/home-icon.svg"} alt="HOME" />
                     <span>HOME</span>
                 </a>
                 <a>
-                    <img src={window.location.origin+"/images/search-icon.svg"} alt="HOME" />
+                    <img src={process.env.PUBLIC_URL+"/images/search-icon.svg"} alt="HOME" />
                     <span>SEARCH</span>
                 </a>
                 <a>
-                    <img src={window.location.origin+"/images/watchlist-icon.svg"} alt="HOME" />
+                    <img src={process.env.PUBLIC_URL+"/images/watchlist-icon.svg"} alt="HOME" />
                     <span>WATCHLIST</span>
                 </a>
                 <a>
-                    <img src={window.location.origin+"/images/original-icon.svg"} alt="HOME" />
+                    <img src={process.env.PUBLIC_URL+"/images/original-icon.svg"} alt="HOME" />
                     <span>ORIGINALS</span>
                 </a>
                 <a>
-                    <img src={window.location.origin+"/images/movie-icon.svg"} alt="HOME" />
+                    <img src={process.env.PUBLIC_URL+"/images/movie-icon.svg"} alt="HOME" />
                     <span>MOVIES</span>
                 </a>
                 <a>
-                    <img src={window.location.origin+"/images/series-icon.svg"} alt="HOME" />
+                    <img src={process.env.PUBLIC_URL+"/images/series-icon.svg"} alt="HOME" />
                     <span>SERIES</span>
                 </a>
             </NavMenu>
