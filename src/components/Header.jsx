@@ -53,7 +53,7 @@ function Header() {
     return (
         <Nav>
             <Logo>
-                <img src="/images/logo.svg" alt="Disney+" />
+                <img src={window.location.origin+"/images/logo.svg"} alt="Disney+" />
             </Logo>
 
             {!userName ? ( 
@@ -66,27 +66,27 @@ function Header() {
 
             <NavMenu>
                 <a href="/home">
-                    <img src="/images/home-icon.svg" alt="HOME" />
+                    <img src={window.location.origin+"/images/home-icon.svg"} alt="HOME" />
                     <span>HOME</span>
                 </a>
                 <a>
-                    <img src="/images/search-icon.svg" alt="HOME" />
+                    <img src={window.location.origin+"/images/search-icon.svg"} alt="HOME" />
                     <span>SEARCH</span>
                 </a>
                 <a>
-                    <img src="/images/watchlist-icon.svg" alt="HOME" />
+                    <img src={window.location.origin+"/images/watchlist-icon.svg"} alt="HOME" />
                     <span>WATCHLIST</span>
                 </a>
                 <a>
-                    <img src="/images/original-icon.svg" alt="HOME" />
+                    <img src={window.location.origin+"/images/original-icon.svg"} alt="HOME" />
                     <span>ORIGINALS</span>
                 </a>
                 <a>
-                    <img src="/images/movie-icon.svg" alt="HOME" />
+                    <img src={window.location.origin+"/images/movie-icon.svg"} alt="HOME" />
                     <span>MOVIES</span>
                 </a>
                 <a>
-                    <img src="/images/series-icon.svg" alt="HOME" />
+                    <img src={window.location.origin+"/images/series-icon.svg"} alt="HOME" />
                     <span>SERIES</span>
                 </a>
             </NavMenu>
